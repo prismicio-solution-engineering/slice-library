@@ -1,0 +1,69 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "dark",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "diameter",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"name",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "meant",
+							"type": "Text"
+						}
+					],
+					[
+						"position",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "fought",
+							"type": "Text"
+						}
+					],
+					[
+						"company",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "spirit",
+							"type": "Text"
+						}
+					],
+					[
+						"quote",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Adipisicing cillum amet aute sint aliqua veniam sint quis."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]
