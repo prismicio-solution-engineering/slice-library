@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type SliceSectionDocumentDataSlicesSlice =
+  | HeroBannerSlice
   | TestimonialsSectionSlice
   | TeamSectionSlice;
 
@@ -41,6 +42,156 @@ export type SliceSectionDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = SliceSectionDocument;
+
+/**
+ * Primary content in *HeroBanner → Primary*
+ */
+export interface HeroBannerSliceDefaultPrimary {
+  /**
+   * Title field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Enter a big bold title
+   * - **API ID Path**: hero_banner.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Enter a short subtitle
+   * - **API ID Path**: hero_banner.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * CTA Button Label field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter button text
+   * - **API ID Path**: hero_banner.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * CTA Button Link field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Add link for the button
+   * - **API ID Path**: hero_banner.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *HeroBanner → Items*
+ */
+export interface HeroBannerSliceDefaultItem {
+  /**
+   * Hero Image field in *HeroBanner → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_banner.items[].hero_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for HeroBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default variation of the hero banner with title, subtitle, button and image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroBannerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroBannerSliceDefaultPrimary>,
+  Simplify<HeroBannerSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *HeroBanner → Primary*
+ */
+export interface HeroBannerSliceWithoutImagePrimary {
+  /**
+   * Title field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Enter a big bold title
+   * - **API ID Path**: hero_banner.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Enter a short subtitle
+   * - **API ID Path**: hero_banner.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * CTA Button Label field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter button text
+   * - **API ID Path**: hero_banner.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * CTA Button Link field in *HeroBanner → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Add link for the button
+   * - **API ID Path**: hero_banner.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Without Image variation for HeroBanner Slice
+ *
+ * - **API ID**: `withoutImage`
+ * - **Description**: Default variation of the hero banner with title, subtitle, button and image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroBannerSliceWithoutImage = prismic.SharedSliceVariation<
+  "withoutImage",
+  Simplify<HeroBannerSliceWithoutImagePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroBanner*
+ */
+type HeroBannerSliceVariation =
+  | HeroBannerSliceDefault
+  | HeroBannerSliceWithoutImage;
+
+/**
+ * HeroBanner Shared Slice
+ *
+ * - **API ID**: `hero_banner`
+ * - **Description**: The Hero Banner is made of a big bold title, a short subtitle, a CTA button, and a hero image.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroBannerSlice = prismic.SharedSlice<
+  "hero_banner",
+  HeroBannerSliceVariation
+>;
 
 /**
  * Primary content in *TeamSection → Primary*
@@ -364,6 +515,13 @@ declare module "@prismicio/client" {
       SliceSectionDocumentData,
       SliceSectionDocumentDataSlicesSlice,
       AllDocumentTypes,
+      HeroBannerSlice,
+      HeroBannerSliceDefaultPrimary,
+      HeroBannerSliceDefaultItem,
+      HeroBannerSliceWithoutImagePrimary,
+      HeroBannerSliceVariation,
+      HeroBannerSliceDefault,
+      HeroBannerSliceWithoutImage,
       TeamSectionSlice,
       TeamSectionSliceDefaultPrimary,
       TeamSectionSliceDefaultItem,
