@@ -110,7 +110,7 @@ export function Listing({ sliceSection, slice }: { sliceSection: AllDocumentType
                 <div className="py-2 cursor-pointer grow" onClick={() => toggleVisibility(sliceSection.uid)}>
                     {sliceSection.uid}
                 </div>
-                <button className="font-bold p-2 rounded-md bg-gray-300" onClick={handleButtonClick}>
+                <button className="font-bold p-2 rounded-md bg-gray-300 hover:bg-gray-500 hover:text-gray-200" onClick={handleButtonClick}>
                     Add to my project
                 </button>
             </div>

@@ -39,29 +39,6 @@ export default async function Index() {
   );
 }
 
-const readModelFiles = async () => {
-  const directoryPath = path.join(process.cwd(), 'src/slices');
-  let modelsArray: { id: string, model: string }[] = [];
-
-  try {
-    const slices = fs.readdirSync(directoryPath);
-    for (const slice of slices) {
-      const filePath = path.join(directoryPath, slice, 'model.json');
-      if (fs.existsSync(filePath)) {
-        const rawData = fs.readFileSync(filePath, 'utf8');
-        const jsonData = JSON.parse(rawData);
-        modelsArray.push({ id: jsonData.id, model: jsonData });
-      }
-    }
-  } catch (err) {
-    console.error('Error reading files:', err);
-  }
-
-  return modelsArray;
-};
-
-
-
 const readSlicesFiles = async () => {
   const directoryPath = path.join(process.cwd(), 'src/slices');
   let slicesArray: { id: string, model: string, component: string, images: {name:string,base64:string}[] }[] = [];
