@@ -40,13 +40,10 @@ const HeroBanner = ({ slice }: HeroBannerProps): JSX.Element => {
             </div>
             <div className="md:flex-1 mt-8 md:mt-0">
               <div className="overflow-hidden rounded-16px">
-                {slice.items.map((item, index) => (
-                  <PrismicNextImage
-                    key={index}
-                    className="w-full h-80 md:h-[500px] object-cover"
-                    field={item.hero_image}
-                  />
-                ))}
+                <PrismicNextImage
+                  className="w-full h-80 md:h-[500px] object-cover"
+                  field={slice.primary.hero_image}
+                />
               </div>
             </div>
           </div>

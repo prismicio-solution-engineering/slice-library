@@ -39,9 +39,7 @@
             "placeholder": "Add link for the button",
             "select": "web"
           }
-        }
-      },
-      "items": {
+        },
         "hero_image": {
           "type": "Image",
           "config": {
@@ -53,6 +51,8 @@
             "thumbnails": []
           }
         }
+      },
+      "items": {
       },
       "docURL": "...",
       "version": "initial",
