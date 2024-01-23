@@ -86,18 +86,13 @@ export interface HeroBannerSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button_link: prismic.LinkField;
-}
 
-/**
- * Primary content in *HeroBanner → Items*
- */
-export interface HeroBannerSliceDefaultItem {
   /**
-   * Hero Image field in *HeroBanner → Items*
+   * Hero Image field in *HeroBanner → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero_banner.items[].hero_image
+   * - **API ID Path**: hero_banner.primary.hero_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hero_image: prismic.ImageField<never>;
@@ -113,7 +108,7 @@ export interface HeroBannerSliceDefaultItem {
 export type HeroBannerSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<HeroBannerSliceDefaultPrimary>,
-  Simplify<HeroBannerSliceDefaultItem>
+  never
 >;
 
 /**
@@ -517,7 +512,6 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       HeroBannerSlice,
       HeroBannerSliceDefaultPrimary,
-      HeroBannerSliceDefaultItem,
       HeroBannerSliceWithoutImagePrimary,
       HeroBannerSliceVariation,
       HeroBannerSliceDefault,
